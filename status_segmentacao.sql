@@ -8,8 +8,8 @@
 --   COUNT(DISTINCT est.codigo) AS codigo_estoque,
 --   COUNT(DISTINCT seg.codigo) AS codigo_segmentacao
 -- FROM
---     `tembici-processo-seletivo.bike_estoque.tb_estoque` AS est
---     LEFT JOIN `tembici-processo-seletivo.bike_estoque.tb_segmentacao` AS seg
+--     `bikosa.bike_estoque.tb_estoque` AS est
+--     LEFT JOIN `bikosa.bike_estoque.tb_segmentacao` AS seg
 --       ON est.codigo = seg.codigo AND est.projeto = seg.projeto;
 
 SELECT
@@ -19,8 +19,8 @@ SELECT
   END AS status,
   COUNT(DISTINCT est.codigo) AS qte_codigo_sku,
 FROM
-    `tembici-processo-seletivo.bike_estoque.tb_estoque` AS est
-    LEFT JOIN `tembici-processo-seletivo.bike_estoque.tb_segmentacao` AS seg
+    `bikosa.bike_estoque.tb_estoque` AS est
+    LEFT JOIN `bikosa.bike_estoque.tb_segmentacao` AS seg
      ON est.codigo = seg.codigo AND est.projeto = seg.projeto
 GROUP BY
   status;

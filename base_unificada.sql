@@ -19,7 +19,7 @@ WITH segmentacao_atual AS (
         PARTITION BY codigo, projeto
         ORDER BY ingestion_date DESC
       ) AS rn
-    FROM `tembici-processo-seletivo.bike_estoque.tb_segmentacao`
+    FROM `bikosa.bike_estoque.tb_segmentacao`
   )
   WHERE rn = 1
 ),
@@ -35,7 +35,7 @@ base AS (
     END AS segmentacao_prioridade,
     est.saldo_em_estoque AS saldo_estoque,
     est.date             AS data_registro_estoque
-  FROM `tembici-processo-seletivo.bike_estoque.tb_estoque` AS est
+  FROM `bikosa.bike_estoque.tb_estoque` AS est
   LEFT JOIN segmentacao_atual AS seg -- nao perder os itens do estoque que ainda nao possuem segmentacao
     ON est.codigo = seg.codigo
    AND est.projeto = seg.projeto

@@ -58,7 +58,7 @@ Para garantir a segmentação mais atual, foi utilizada a seguinte função de j
         PARTITION BY codigo, projeto
         ORDER BY ingestion_date DESC
       ) AS rn
-    FROM `tembici-processo-seletivo.bike_estoque.tb_segmentacao`
+    FROM `bikosa.bike_estoque.tb_segmentacao`
   WHERE rn = 1
 ```
 
@@ -67,7 +67,7 @@ Isso permite selecionar apenas o **registro mais recente de segmentação (data 
 Após isso, foi aplicado `LEFT JOIN` entre as tabelas com as chaves `projeto + codigo`:
 
 ```sql
-  FROM `tembici-processo-seletivo.bike_estoque.tb_estoque` AS est
+  FROM `bikosa.bike_estoque.tb_estoque` AS est
   LEFT JOIN segmentacao_atual AS seg 
   	ON est.codigo = seg.codigo
     AND est.projeto = seg.projeto
